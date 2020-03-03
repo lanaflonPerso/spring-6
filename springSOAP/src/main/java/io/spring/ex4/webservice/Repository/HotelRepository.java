@@ -66,10 +66,8 @@ public class HotelRepository {
 		hotels.put(h3.getId(), h3);
 	}
 
-	public List<Hotel> findHotel(String nom, Date dateDepart, Date dateArrive, String intervallePrix) {
-		Assert.notNull(nom, "The hotel name must not be null");
-		System.out.println("€€€€€######################################€€€€€€€€€€"+nom+ "$$$$$$$$$ "+ dateDepart +" &&&&&: "+dateArrive );
-		
+	public List<Hotel> findHotel(String nom, Date dateDepart, Date dateArrive, String intervallePrix, int nombreEtoiles, int nombresPersonnesHeberges) {
+		Assert.notNull(nom, "The hotel name must not be null");		
 		String [] prix = intervallePrix.split("-");
 		Double minPrix = Double.parseDouble(prix[0]);
 		Double maxPrix = Double.parseDouble(prix[1]);
@@ -77,14 +75,18 @@ public class HotelRepository {
 		List<Hotel> listH = new ArrayList<Hotel>();
 		List<Chambre> listCh = new ArrayList<Chambre>();
 		for(Hotel h: hotels.values()) {
-			if(h.getAdresse().getVile().equals(nom)) {
-				for(Chambre ch: h.getChambre()) {
-					if(ch.getPrix()>= minPrix && ch.getPrix() <= maxPrix) {
-						listCh.add(ch);
-						
+			if(h.getAdresse().getVile().equals(nom) && h.getNombreEtoiles() == nombreEtoiles) {
+				if(h.getChambre().size()>=nombresPersonnesHeberges) {
+					for(Chambre ch: h.getChambre()) {
+						if(ch.getPrix()>= minPrix && ch.getPrix() <= maxPrix) {
+							listCh.add(ch);
+							
+						}
 					}
+					
+				   listH.add(new Hotel(h.getId(), h.getNom(), h.getNombreEtoiles(), h.getAdresse(), listCh));
 				}
-				listH.add(new Hotel(h.getId(), h.getNom(), h.getNombreEtoiles(), h.getAdresse(), listCh));
+				
 			}
 		}
 		return listH;

@@ -1,6 +1,8 @@
 package io.spring.ex4.webservice.endpoint;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -10,6 +12,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import io.spring.ex4.webservice.GetHotelRequest;
 import io.spring.ex4.webservice.GetHotelResponse;
+import io.spring.ex4.webservice.Hotel;
 import io.spring.ex4.webservice.Repository.HotelRepository;
 
 
@@ -19,6 +22,7 @@ public class HotelEndpoint {
 	private static final String NAMESPACE_URI = "http://spring.io/ex4/webservice";
 
 	private HotelRepository hotelRepository;
+	List<Hotel> listHotel = new ArrayList<Hotel>();
 
 	@Autowired
 	public HotelEndpoint(HotelRepository hotelRepository) {
@@ -27,13 +31,20 @@ public class HotelEndpoint {
 	
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getHotelRequest")
 	@ResponsePayload
-	public GetHotelResponse getCountry(@RequestPayload GetHotelRequest request) {
+	public GetHotelResponse getHotel(@RequestPayload GetHotelRequest request) {
 		GetHotelResponse response = new GetHotelResponse();
 		Date dateDepart = request.getDateDepart().toGregorianCalendar().getTime();
 		Date dateArrivee = request.getDateArrivee().toGregorianCalendar().getTime();
-		response.setHotel(hotelRepository.findHotel(request.getNom(), dateDepart, dateArrivee, request.getIntervallePrix()));
-		System.out.println("###################### ???????????????????????????????,, "+ dateDepart);
-		System.out.println(" aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ,, "+ dateArrivee);
+		
+		listHotel = hotelRepository.findHotel(request.getNom(), dateDepart, dateArrivee,request.getIntervallePrix(), request.getNombreEtoiles(), request.getNombrePersonnesHeberges());
+		response.setHotel(listHotel);
+		
+		System.out.println("date de départ: "+ dateDepart);
+		System.out.println(" date d'arrivée:  "+ dateArrivee);
+		System.out.println(" interveless du prix: "+ request.getIntervallePrix());
+		System.out.println(" nombre etoiles: "+ request.getNombreEtoiles());
+		System.out.println(" nombre etoiles: "+ request.getNombrePersonnesHeberges());
+		
 		return response;
 	}
 
