@@ -1,15 +1,6 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/ex4/webservice"
            targetNamespace="http://spring.io/ex4/webservice" elementFormDefault="qualified">
 
-
-
-
-
-
-
-
-
-
     <xs:element name="getCountryRequest">
         <xs:complexType>
             <xs:sequence>

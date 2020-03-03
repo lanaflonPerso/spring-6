@@ -2,8 +2,10 @@
 				  xmlns:gs="http://spring.io/ex4/webservice">
    <soapenv:Header/>
    <soapenv:Body>
-      <gs:getCountryRequest>
-         <gs:name>Spain</gs:name>
-      </gs:getCountryRequest>
+      <gs:getHotelRequest>
+         <gs:nom>Montpellier</gs:nom>
+         <gs:dateDepart>2019-09-24</gs:dateDepart>
+         <gs:dateArrivee>2020-01-24</gs:dateArrivee>
+      </gs:getHotelRequest>
    </soapenv:Body>
 </soapenv:Envelope>

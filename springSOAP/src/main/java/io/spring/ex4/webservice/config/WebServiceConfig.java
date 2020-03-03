@@ -1,4 +1,4 @@
-package io.spring.ex4.webservice;
+package io.spring.ex4.webservice.config;
 
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -27,7 +27,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	@Bean(name = "hotel")
 	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-		wsdl11Definition.setPortTypeName("HotelPort");
+		wsdl11Definition.setPortTypeName("CountriesPort");
 		wsdl11Definition.setLocationUri("/ws");
 		wsdl11Definition.setTargetNamespace("http://spring.io/ex4/webservice");
 		wsdl11Definition.setSchema(countriesSchema);
