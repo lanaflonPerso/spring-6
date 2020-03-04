@@ -44,7 +44,6 @@ public class HotelEndpoint {
 		System.out.println(" interveless du prix: "+ request.getIntervallePrix());
 		System.out.println(" nombre etoiles: "+ request.getNombreEtoiles());
 		System.out.println(" nombre etoiles: "+ request.getNombrePersonnesHeberges());
-		
 		return response;
 	}
 

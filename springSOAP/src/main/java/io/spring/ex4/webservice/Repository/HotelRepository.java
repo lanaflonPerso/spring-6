@@ -76,11 +76,10 @@ public class HotelRepository {
 		List<Chambre> listCh = new ArrayList<Chambre>();
 		for(Hotel h: hotels.values()) {
 			if(h.getAdresse().getVile().equals(nom) && h.getNombreEtoiles() == nombreEtoiles) {
-				if(h.getChambre().size()>=nombresPersonnesHeberges) {
+				if(h.getChambre().size()>= nombresPersonnesHeberges) {
 					for(Chambre ch: h.getChambre()) {
 						if(ch.getPrix()>= minPrix && ch.getPrix() <= maxPrix) {
 							listCh.add(ch);
-							
 						}
 					}
 					

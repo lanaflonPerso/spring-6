@@ -5,5 +5,5 @@
 // Generated on: 2020.03.04 at 05:13:05 PM CET 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://spring.io/ex4/webservice", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package io.spring.ex4.webservice;
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://spring.io/guides/gs-producing-web-service", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+package io.spring.guides.gs_producing_web_service;
