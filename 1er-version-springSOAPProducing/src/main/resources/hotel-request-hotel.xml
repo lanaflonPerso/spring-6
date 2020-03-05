@@ -1,0 +1,14 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+				  xmlns:gs="http://spring.io/ex4/webservice">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gs:getHotelRequest>
+         <gs:nom>Montpellier</gs:nom>
+         <gs:dateDepart>2020-02-19</gs:dateDepart>
+         <gs:dateArrivee>2020-02-24</gs:dateArrivee>
+         <gs:intervallePrix>10.00-60.50</gs:intervallePrix>
+         <gs:nombreEtoiles>3</gs:nombreEtoiles>
+         <gs:nombrePersonnesHeberges>1</gs:nombrePersonnesHeberges>
+      </gs:getHotelRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
