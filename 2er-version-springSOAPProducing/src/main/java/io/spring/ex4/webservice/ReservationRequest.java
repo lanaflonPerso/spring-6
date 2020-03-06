@@ -27,9 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="login" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="dateDebut" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="dateFin" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="nombrePersonnesHeberges" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="idOffre" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -42,22 +40,17 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "login",
     "password",
-    "dateDebut",
-    "dateFin",
-    "nombrePersonnesHeberges"
+    "idOffre"
 })
-@XmlRootElement(name = "getHotelRequest")
-public class GetHotelRequest {
+@XmlRootElement(name = "ReservationRequest")
+public class ReservationRequest {
 
     @XmlElement(required = true)
     protected String login;
     @XmlElement(required = true)
     protected String password;
     @XmlElement(required = true)
-    protected String dateDebut;
-    @XmlElement(required = true)
-    protected String dateFin;
-    protected int nombrePersonnesHeberges;
+    protected String idOffre;
 
     /**
      * Gets the value of the login property.
@@ -108,67 +101,27 @@ public class GetHotelRequest {
     }
 
     /**
-     * Gets the value of the dateDebut property.
+     * Gets the value of the idOffre property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getDateDebut() {
-        return dateDebut;
+    public String getIdOffre() {
+        return idOffre;
     }
 
     /**
-     * Sets the value of the dateDebut property.
+     * Sets the value of the idOffre property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setDateDebut(String value) {
-        this.dateDebut = value;
-    }
-
-    /**
-     * Gets the value of the dateFin property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDateFin() {
-        return dateFin;
-    }
-
-    /**
-     * Sets the value of the dateFin property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDateFin(String value) {
-        this.dateFin = value;
-    }
-
-    /**
-     * Gets the value of the nombrePersonnesHeberges property.
-     * 
-     */
-    public int getNombrePersonnesHeberges() {
-        return nombrePersonnesHeberges;
-    }
-
-    /**
-     * Sets the value of the nombrePersonnesHeberges property.
-     * 
-     */
-    public void setNombrePersonnesHeberges(int value) {
-        this.nombrePersonnesHeberges = value;
+    public void setIdOffre(String value) {
+        this.idOffre = value;
     }
 
 }

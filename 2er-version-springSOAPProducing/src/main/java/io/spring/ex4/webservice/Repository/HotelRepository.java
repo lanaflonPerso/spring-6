@@ -2,6 +2,7 @@ package io.spring.ex4.webservice.Repository;
 
 import javax.annotation.PostConstruct;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -70,18 +71,19 @@ public class HotelRepository {
 		Assert.notNull(password, "Le password de l'agence de voyage doit être non null");
 		//Date dateD = new Date(dateDebut);
 		//Date dateF = new Date(dateFin);
-		System.out.println("################################################");
-
+		
 		//verifier si l'agence de voyage qui demande le service web existe dans la base de données de l'hotel.
 		for(AgenceVoyage ag: agencesVoyages) {
 			if(ag.getLogin().equals(login) && ag.getPassword().equals(password)) {
 				System.out.println("****************************************");
-				Offre offr = new Offre();
+				
 				if (hotel.getChambre().size() >= nombrePersonnesHeberges) {
 					for (Chambre ch : hotel.getChambre()) {
 						// tester la disponibilité, et l'intervalle de prix demandé par le client.
 						if (ch.getDisponible().equals("yes")) {
-							offr.setId(ch.getNumero());
+							Offre offr = new Offre();
+							//identifiant de l'offre est le numéro de chambre concaténer avec la date d'oujourd'hui
+							offr.setId(ch.getNumero()+"_"+ new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
 							offr.setDateDisponibilite("05-03-2020");
 							offr.setTypeChambre(ch.getTypeLit());
 							offr.setPrix((ag.getTarif()*ch.getPrix())/100);

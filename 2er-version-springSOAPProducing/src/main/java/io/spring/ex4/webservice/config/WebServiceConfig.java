@@ -39,6 +39,21 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		return new SimpleXsdSchema(new ClassPathResource("webservice1.xsd"));
 	}
 	
+	@Bean(name = "reservation")
+	public DefaultWsdl11Definition defaultWsdl11DefinitionReservation(XsdSchema hotelsSchemaReservation) {
+		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+		wsdl11Definition.setPortTypeName("ReservationPort");
+		wsdl11Definition.setLocationUri("/ws");
+		wsdl11Definition.setTargetNamespace("http://spring.io/ex4/webservice");
+		wsdl11Definition.setSchema(hotelsSchemaReservation);
+		return wsdl11Definition;
+	}
+
+	@Bean
+	public XsdSchema hotelsSchemaReservation() {
+		return new SimpleXsdSchema(new ClassPathResource("webservice2.xsd"));
+	}
+	
 	 
 	
 	

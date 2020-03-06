@@ -14,7 +14,10 @@ import io.spring.ex4.webservice.GetHotelRequest;
 import io.spring.ex4.webservice.GetHotelResponse;
 import io.spring.ex4.webservice.Hotel;
 import io.spring.ex4.webservice.Offre;
+import io.spring.ex4.webservice.ReservationRequest;
+import io.spring.ex4.webservice.ReservationResponse;
 import io.spring.ex4.webservice.Repository.HotelRepository;
+import io.spring.ex4.webservice.Repository.ReservationRepository;
 
 
 @Endpoint
@@ -23,7 +26,9 @@ public class HotelEndpoint {
 	private static final String NAMESPACE_URI = "http://spring.io/ex4/webservice";
 
 	private HotelRepository hotelRepository;
+	private ReservationRepository reservationRepository;
 	private List<Offre> offres = new ArrayList<Offre>();
+	private List<String> confirmation = new ArrayList<String>();
 
 	@Autowired
 	public HotelEndpoint(HotelRepository hotelRepository) {
@@ -40,6 +45,21 @@ public class HotelEndpoint {
 		System.out.println("Agence login: "+ request.getLogin());
 		System.out.println(" Agence voyage password:  "+ request.getPassword());
 		System.out.println(" Nombre de personnes: "+ request.getNombrePersonnesHeberges());
+		return response;
+	}
+	
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "ReservationRequest")
+	@ResponsePayload
+	public ReservationResponse reservation(@RequestPayload ReservationRequest request) {
+		ReservationResponse response = new ReservationResponse();
+		
+		
+		
+		confirmation = reservationRepository.confirmerReservation(request.getLogin(), request.getPassword(), request.getIdOffre());
+		System.out.println("€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€e");
+		System.out.println("identifiant Offre: "+ confirmation.get(1));
+		System.out.println("message de confirmation: "+ confirmation.get(0));
+		
 		return response;
 	}
 
