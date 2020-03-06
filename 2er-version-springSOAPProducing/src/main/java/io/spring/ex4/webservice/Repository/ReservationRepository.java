@@ -18,7 +18,7 @@ import io.spring.ex4.webservice.Offre;
 
 @Component
 public class ReservationRepository {
-	private List<String> confirmation;
+	private List<String> confirmation = new ArrayList<String>();
 	private List<AgenceVoyage> agencesVoyages = new ArrayList<AgenceVoyage>();
 	
 	@PostConstruct
@@ -33,15 +33,15 @@ public class ReservationRepository {
 		AgenceVoyage ag2 = new AgenceVoyage();
 		ag2.setId(2); ag2.setLogin("theirno"); ag2.setPassword("barry");ag2.setNom("take your breath"); ag2.setTarif(09.00);
 		agencesVoyages.add(ag1);
-		agencesVoyages.add(ag2);
-		 
+		agencesVoyages.add(ag2);		 
 	}
 
-	public List<String>  confirmerReservation(String login,  String password, String idOffre) {
+	public List<String>  confirmerReservation(String login,  String password, String idOffre, Client client) {
 		/* validation des données reçus par le web service 2 */
 		Assert.notNull(login, "Le login  de l'agence de voyage doit être non null");
 		Assert.notNull(password, "Le password de l'agence de voyage doit être non null");
 		
+		System.out.println("****************************************");
 		/* verifier si l'agence de voyage qui demande le service web existe dans la base de données de l'hote */
 		for(AgenceVoyage ag: agencesVoyages) {
 			if(ag.getLogin().equals(login) && ag.getPassword().equals(password)) {

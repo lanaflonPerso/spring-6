@@ -13,8 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
-import com.spring.consumingSOAPwebservice.wsdl.GetHotelRequest;
-import com.spring.consumingSOAPwebservice.wsdl.GetHotelResponse;
+import com.spring.consumingSOAPwebservice.wsdl.Client;
+import com.spring.consumingSOAPwebservice.wsdl.ReservationRequest;
+import com.spring.consumingSOAPwebservice.wsdl.ReservationResponse;
 
 
 @Service
@@ -22,31 +23,21 @@ public class HotelClient extends WebServiceGatewaySupport {
 
   private static final Logger log = LoggerFactory.getLogger(HotelClient.class);
 
-  public GetHotelResponse getHotel(String nom, String dateDepart, 
-		  String dateArrivee, String IntervellePrix, int nombreEtoiles, int nombrePersonnesHeberges) throws DatatypeConfigurationException {
+  public ReservationResponse getReservation(String login, String password, 
+		  String idOffre, Client client) {
 
-    GetHotelRequest request = new GetHotelRequest();
-    request.setNom("Montpellier");
+    ReservationRequest request = new ReservationRequest();
+    request.setLogin(login);
+    request.setPassword(password);
+    request.setIdOffre(idOffre);
+    request.setClient(client);
  
-    GregorianCalendar dd = new GregorianCalendar();
-    dd.setTime(new Date("2020-02-19"));
-    XMLGregorianCalendar xgdd = DatatypeFactory.newInstance().newXMLGregorianCalendar(dd);    
-    request.setDateDepart(xgdd);
-    
-    GregorianCalendar da = new GregorianCalendar();
-    da.setTime(new Date("2020-02-24"));
-    XMLGregorianCalendar xgda = DatatypeFactory.newInstance().newXMLGregorianCalendar(da);    
-    request.setDateArrivee(xgda);
-    
-    request.setIntervallePrix("10.00-60.50");
-    request.setNombreEtoiles(3);
-    request.setNombrePersonnesHeberges(1);
-    
-    log.info("Hotel requested : " + nom);
+    log.info("Reservation de client : " + client.getNom());
 
-    GetHotelResponse response = (GetHotelResponse) getWebServiceTemplate().marshalSendAndReceive("http://localhost:8080/ws/hotel", request,
-            new SoapActionCallback("http://spring.io/ex4/webservice/GetHotelRequest"));
+    ReservationResponse response = (ReservationResponse) getWebServiceTemplate().marshalSendAndReceive("http://localhost:8080/ws/reservation", request,
+            new SoapActionCallback("http://spring.io/ex4/webservice/ReservationRequest"));
 
+    log.info("€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€e");
     return response;
   }
 

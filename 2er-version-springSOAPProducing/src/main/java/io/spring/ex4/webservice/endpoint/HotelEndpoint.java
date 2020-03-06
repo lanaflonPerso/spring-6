@@ -31,15 +31,15 @@ public class HotelEndpoint {
 	private List<String> confirmation = new ArrayList<String>();
 
 	@Autowired
-	public HotelEndpoint(HotelRepository hotelRepository) {
+	public HotelEndpoint(HotelRepository hotelRepository, ReservationRepository reservationRepository) {
 		this.hotelRepository = hotelRepository;
+		this.reservationRepository = reservationRepository;
 	}
 	
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getHotelRequest")
 	@ResponsePayload
 	public GetHotelResponse getHotel(@RequestPayload GetHotelRequest request) {
 		GetHotelResponse response = new GetHotelResponse();
-		
 		offres = hotelRepository.findHotel(request.getLogin(), request.getPassword(), request.getDateDebut(), request.getDateFin(), request.getNombrePersonnesHeberges());
 		response.getOffres().addAll(offres);
 		System.out.println("Agence login: "+ request.getLogin());
@@ -53,10 +53,9 @@ public class HotelEndpoint {
 	public ReservationResponse reservation(@RequestPayload ReservationRequest request) {
 		ReservationResponse response = new ReservationResponse();
 		
-		
-		
-		confirmation = reservationRepository.confirmerReservation(request.getLogin(), request.getPassword(), request.getIdOffre());
-		System.out.println("€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€e");
+		confirmation = reservationRepository.confirmerReservation(request.getLogin(), request.getPassword(), request.getIdOffre(), request.getClient());
+		response.getConfirmation().addAll(confirmation);
+		System.out.println("la reservation de Mr. "+ request.getClient().getPrenom() + " "+ request.getClient().getNom());
 		System.out.println("identifiant Offre: "+ confirmation.get(1));
 		System.out.println("message de confirmation: "+ confirmation.get(0));
 		

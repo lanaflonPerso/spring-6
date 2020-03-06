@@ -75,8 +75,7 @@ public class HotelRepository {
 		//verifier si l'agence de voyage qui demande le service web existe dans la base de données de l'hotel.
 		for(AgenceVoyage ag: agencesVoyages) {
 			if(ag.getLogin().equals(login) && ag.getPassword().equals(password)) {
-				System.out.println("****************************************");
-				
+								
 				if (hotel.getChambre().size() >= nombrePersonnesHeberges) {
 					for (Chambre ch : hotel.getChambre()) {
 						// tester la disponibilité, et l'intervalle de prix demandé par le client.

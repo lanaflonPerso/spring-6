@@ -9,32 +9,39 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.spring.consumingSOAPwebservice.springSOAPConsuming.CountryClient;
 import com.spring.consumingSOAPwebservice.springSOAPConsuming.HotelClient;
-import com.spring.consumingSOAPwebservice.wsdl.GetCountryResponse;
-import com.spring.consumingSOAPwebservice.wsdl.GetHotelResponse;
+import com.spring.consumingSOAPwebservice.wsdl.Client;
+import com.spring.consumingSOAPwebservice.wsdl.ReservationResponse;
+
+
 
 @Controller
 public class GreetingController {
 	
-	@Autowired private CountryClient hotelClient;
+	@Autowired 
+	private HotelClient hotelClient;
 
 	@GetMapping("/greeting")
 	//@ResponseBody
 	public String greeting(@RequestParam(name="name",required=false, defaultValue="karim") String name, Model model)
 			//@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) 
 	{
-		String nom = "Montpellier";	
-    	String dateDepart = "2020-02-19";
-    	String dateArrivee = "2020-02-24";
-    	String intervellePrix = "10.00-60.50";
-    	int nombreEtoiles = 3;
-    	int nombrePersonnesHebergees = 1;
+		String login = "karim";	
+    	String password = "dahdouh";
+    	String idOffre = "50_04-03-2020";
+    	Client client = new Client();
+    	client.setId(13);
+    	client.setNom("Barry");
+    	client.setPrenom("Theirno");
+    	client.setCarteCredit("5088734328394382");
     	
    
-			GetCountryResponse response = hotelClient.getCountry("spain");
-			//for(cie)
-			System.err.println(response.getCountry());
+			ReservationResponse response = hotelClient.getReservation(login, password, idOffre, client);
+			for(String c: response.getConfirmation()) {
+				System.err.println("############"+ response.getConfirmation());
+				System.err.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+			}
+			System.err.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 		 
 	      
 		

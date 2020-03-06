@@ -80,7 +80,7 @@
 						<generatePackage>com.spring.consumingSOAPwebservice.wsdl</generatePackage>
 						<schemas>
 							<schema>
-								<url>http://localhost:8080/ws/hotel.wsdl</url>
+								<url>http://localhost:8080/ws/reservation.wsdl</url>
 							</schema>
 						</schemas>
 					</configuration>

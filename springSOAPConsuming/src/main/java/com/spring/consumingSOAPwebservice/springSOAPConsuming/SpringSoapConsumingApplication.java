@@ -6,8 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.spring.consumingSOAPwebservice.wsdl.GetCountryResponse;
-import com.spring.consumingSOAPwebservice.wsdl.GetHotelResponse;
+import com.spring.consumingSOAPwebservice.wsdl.Client;
+import com.spring.consumingSOAPwebservice.wsdl.ReservationResponse;
+
 
 @SpringBootApplication
 @ComponentScan({"io", "com"})
@@ -17,19 +18,25 @@ public class SpringSoapConsumingApplication {
 		SpringApplication.run(SpringSoapConsumingApplication.class, args);
 	}
 	
-	/*@Bean
-	CommandLineRunner lookup(CountryClient quoteClient) {
+	@Bean
+	CommandLineRunner lookup(HotelClient quoteClient) {
 	    return args -> {
 	      String country = "Spain";
 
 	      if (args.length > 0) {
 	        country = args[0];
 	      }
-	      GetCountryResponse response = quoteClient.getCountry(country);
-	      System.err.println(response.getCountry().getCurrency());
+	      Client client = new Client();
+	    	client.setId(13);
+	    	client.setNom("Barry");
+	    	client.setPrenom("Theirno");
+	    	client.setCarteCredit("5088734328394382");
+	      ReservationResponse response = quoteClient.getReservation("karim", "dahdouh", "50-4838493", client);
+	      for(String r : response.getConfirmation())
+	      System.err.println("########################################"+ r);
 	    };
 	  }
-	  */
+	  
 	  
 
 }
