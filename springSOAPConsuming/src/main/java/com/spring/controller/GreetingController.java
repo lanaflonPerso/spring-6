@@ -45,7 +45,8 @@ public class GreetingController {
 		 
 	      
 		
-		model.addAttribute("name", name);
+			model.addAttribute("idOffre", response.getConfirmation().get(1));
+			model.addAttribute("confirmationReservation", response.getConfirmation().get(0));
 		return "greeting";
 	}
 

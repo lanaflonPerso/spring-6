@@ -59,6 +59,7 @@
             <xs:element name="typeLit" type="xs:string"/>
             <xs:element name="prix" type="xs:double"/>
             <xs:element name="disponible" type="xs:string"/>
+            <xs:element name="hotel" type="tns:hotel"/>
         </xs:sequence>
     </xs:complexType>
     
