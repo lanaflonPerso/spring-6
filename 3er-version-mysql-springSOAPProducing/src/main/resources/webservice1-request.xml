@@ -1,0 +1,13 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+				  xmlns:gs="http://spring.io/ex4/webservice">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gs:getHotelRequest>
+         <gs:login>karim</gs:login>
+         <gs:password>dahdouh</gs:password>
+         <gs:dateDebut>2020-03-05</gs:dateDebut>
+         <gs:dateFin>2020-03-09</gs:dateFin>
+         <gs:nombrePersonnesHeberges>1</gs:nombrePersonnesHeberges>
+      </gs:getHotelRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
