@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>    
+    <h3> critères de recherche des offres d'hotel</h3>
+    <p th:text="'login: ' + ${RequestOffres.login}" />
+    <p th:text="'password: ' + ${RequestOffres.password}" />
+    <p th:text="'Date de début ' + ${RequestOffres.dateDebut}" />
+    <p th:text="'Date de fin ' + ${RequestOffres.dateFin}" />
+    <p th:text="'Date de fin ' + ${RequestOffres.nombrePersonnesHeberges}"/>
+
+	<h1>Result: Offres disponible</h1>
+	<table>
+		<tr th:each="offre : ${listOffre}">
+			<td th:text="${offre.typeChambre}"></td>
+			<td th:text="${offre.dateDisponibilite}"></td>
+		</tr>
+	</table>
+
+	<a href="/offres">Submit Chercher d'autres offres d'hébergement </a>
+</body>
+</html>
+
+

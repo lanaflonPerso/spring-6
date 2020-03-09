@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+      
+    	<h1>Version distrbuée webservice1 : Chercher les offres d'hotel </h1>
+	    <form action="#" th:action="@{/offres}" th:object="${RequestOffres}" method="post">
+	    	<p>Login: <input type="text" th:field="*{login}" /></p>
+	        <p>Password: <input type="text" th:field="*{password}" /></p>
+	        <p>dateDebut: <input type="text" th:field="*{dateDebut}" /></p>
+ 			<p>dateFin: <input type="text" th:field="*{dateFin}" /></p> 
+	        <p> nombre Personnes Heberges: <input type="text" th:field="*{nombrePersonnesHeberges}" /></p>
+	        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+	    </form>
+    
+</body>
+</html>

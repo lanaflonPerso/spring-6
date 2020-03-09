@@ -4,7 +4,7 @@
     <xs:element name="getHotelRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="nom" type="xs:string"/>
+                <xs:element name="ville" type="xs:string"/>
                 <xs:element name="dateDepart" type="xs:date"/>
                 <xs:element name="dateArrivee" type="xs:date"/>
                 <xs:element name="intervallePrix" type="xs:string"/>

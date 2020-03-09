@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.spring.consumingSOAPwebservice.springSOAPConsuming.HotelClient;
+import com.spring.client.HotelClient;
 import com.spring.consumingSOAPwebservice.wsdl.Client;
 import com.spring.consumingSOAPwebservice.wsdl.ReservationResponse;
 
@@ -21,7 +21,7 @@ public class GreetingController {
 	@Autowired 
 	private HotelClient hotelClient;
 
-	@GetMapping("/greeting")
+	@GetMapping("/greeting/test")
 	//@ResponseBody
 	public String greeting(@RequestParam(name="name",required=false, defaultValue="karim") String name, Model model)
 			//@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) 
@@ -44,7 +44,6 @@ public class GreetingController {
 			System.err.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 		 
 	      
-		
 			model.addAttribute("idOffre", response.getConfirmation().get(1));
 			model.addAttribute("confirmationReservation", response.getConfirmation().get(0));
 		return "greeting";

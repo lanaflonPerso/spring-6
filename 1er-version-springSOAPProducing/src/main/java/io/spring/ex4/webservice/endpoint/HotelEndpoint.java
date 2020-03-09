@@ -36,7 +36,7 @@ public class HotelEndpoint {
 		Date dateDepart = request.getDateDepart().toGregorianCalendar().getTime();
 		Date dateArrivee = request.getDateArrivee().toGregorianCalendar().getTime();
 		
-		listHotel = hotelRepository.findHotel(request.getNom(), dateDepart, dateArrivee,request.getIntervallePrix(), request.getNombreEtoiles(), request.getNombrePersonnesHeberges());
+		listHotel = hotelRepository.findHotel(request.getVille(), dateDepart, dateArrivee,request.getIntervallePrix(), request.getNombreEtoiles(), request.getNombrePersonnesHeberges());
 		response.getHotel().addAll(listHotel);
 		
 		System.out.println("date de départ: "+ dateDepart);

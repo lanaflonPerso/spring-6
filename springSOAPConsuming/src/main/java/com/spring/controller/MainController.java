@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.spring.consumingSOAPwebservice.springSOAPConsuming.HotelClient;
+import com.spring.client.HotelClient;
+
 
 
 
@@ -31,9 +32,9 @@ public class MainController {
 //	
 	@GetMapping(path="/all")
 	public String getAllOffres(Model model) {
-		List<Hotel> hotels = hotelRepository.findAll();
+		//List<Hotel> hotels = hotelRepository.findAll();
 		//offres = hotelRepository.findHotel(request.getLogin(), request.getPassword(), req
-		model.addAttribute("hotels", hotels);
+		//model.addAttribute("hotels", hotels);
 		return "all";
 	}
 	
