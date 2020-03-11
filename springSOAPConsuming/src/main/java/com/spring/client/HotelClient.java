@@ -41,7 +41,7 @@ public class HotelClient extends WebServiceGatewaySupport {
 	  }
 
 
-  public ReservationResponse getReservation(String login, String password, String idOffre, Client client) {
+  public ReservationResponse doReservation(String login, String password, String idOffre, Client client) {
 
 	    ReservationRequest request = new ReservationRequest();
 	    request.setLogin(login);

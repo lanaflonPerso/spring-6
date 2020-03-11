@@ -119,9 +119,9 @@ public class HotelEndpoint {
 		res.setDateDepart("2020-03-09");		
 				reservationRepository.save(res);
 		
-		confirmation.add("Reservation  été bien faite.");
+		confirmation.add("Reservation  a été bien faite.");
 		confirmation.add(request.getIdOffre());
-		System.out.println("Reservation  été bien faite.");
+		System.out.println("Reservation  a été bien faite.");
 		
 		response.getConfirmation().addAll(confirmation);
 		System.out.println("la reservation de Mr. "+ request.getClient().getPrenom() + " "+ request.getClient().getNom());

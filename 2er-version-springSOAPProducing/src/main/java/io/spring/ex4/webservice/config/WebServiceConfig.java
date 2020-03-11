@@ -36,7 +36,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 
 	@Bean
 	public XsdSchema hotelsSchema() {
-		return new SimpleXsdSchema(new ClassPathResource("webservice1.xsd"));
+		return new SimpleXsdSchema(new ClassPathResource("webservice.xsd"));
 	}
 	
 	@Bean(name = "reservation")
@@ -51,7 +51,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 
 	@Bean
 	public XsdSchema hotelsSchemaReservation() {
-		return new SimpleXsdSchema(new ClassPathResource("webservice2.xsd"));
+		return new SimpleXsdSchema(new ClassPathResource("webservice.xsd"));
 	}
 	
 	 

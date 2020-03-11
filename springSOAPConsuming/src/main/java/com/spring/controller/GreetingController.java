@@ -36,16 +36,16 @@ public class GreetingController {
     	client.setCarteCredit("5088734328394382");
     	
    
-			ReservationResponse response = hotelClient.getReservation(login, password, idOffre, client);
-			for(String c: response.getConfirmation()) {
-				System.err.println("############"+ response.getConfirmation());
-				System.err.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-			}
-			System.err.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-		 
-	      
-			model.addAttribute("idOffre", response.getConfirmation().get(1));
-			model.addAttribute("confirmationReservation", response.getConfirmation().get(0));
+//			ReservationResponse response = hotelClient.getReservation(login, password, idOffre, client);
+//			for(String c: response.getConfirmation()) {
+//				System.err.println("############"+ response.getConfirmation());
+//				System.err.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+//			}
+//			System.err.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+//		 
+////	      
+//			model.addAttribute("idOffre", response.getConfirmation().get(1));
+//			model.addAttribute("confirmationReservation", response.getConfirmation().get(0));
 		return "greeting";
 	}
 
