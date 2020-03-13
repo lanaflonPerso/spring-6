@@ -1,6 +1,7 @@
 package com.spring.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -33,6 +34,23 @@ public class HotelController {
 	  /********************************  Offres d'hotel ****************************/
 	  /*****************************************************************************/
 	
+	  @GetMapping("/")
+	  public String home(Model model) {
+		  model.addAttribute("standardDate", new Date());
+	    return "index";
+	  }
+	  
+//	  @GetMapping("/")
+//	  public String hokjhkjhme() {
+//        return "index";
+//      }
+
+	   @GetMapping("/contact")
+	    public String contactPage() {
+	        return "contact";
+	    }
+	  
+	  
 	  @GetMapping("/offres")
 	  public String OffreForm(Model model) {
 	    model.addAttribute("RequestOffres", new GetHotelRequest());
@@ -85,14 +103,9 @@ public class HotelController {
 		  
 		  ReservationResponse response = hotelClient.doReservation(login, password, idOffre,client);
 		  confirmation = response.getConfirmation();
-		  
-		  
-//		  for(Offre off: offres) {
-//				System.err.println("############"+ off.getDateDisponibilite());
-//				System.err.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-//			}
-		  
+		 		  
 		  model.addAttribute("confirmation", confirmation);
+		  model.addAttribute("client", client);
 			
 	    return "reservation-result";
 	  }

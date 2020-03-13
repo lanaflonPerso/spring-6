@@ -1,27 +1,30 @@
-<!DOCTYPE HTML>
-<html xmlns:th="https://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
 <head>
-    <title>Getting Started: Handling Form Submission</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Offres d'hotel</title>
 </head>
-<body>    
-    <h3> critères de recherche des offres d'hotel</h3>
-<!--     <p th:text="'login: ' + ${reservationRequest.login}" /> -->
-<!--     <p th:text="'password: ' + ${reservationRequest.password}" /> -->
-<!--     <p th:text="'Date de début ' + ${reservationRequest.dateDebut}" /> -->
-<!--     <p th:text="'Date de fin ' + ${reservationRequest.dateFin}" /> -->
-<!--     <p th:text="'Date de fin ' + ${reservationRequest.nombrePersonnesHeberges}"/> -->
+<body>
 
-	<h1>Result: Offres disponible</h1>
-<!-- 	<table> -->
-<!-- 		<tr th:each="offre : ${listOffre}"> -->
-<!-- 			<td th:text="${offre.typeChambre}"></td> -->
-<!-- 			<td th:text="${offre.dateDisponibilite}"></td> -->
-<!-- 		</tr> -->
-<!-- 	</table> -->
+	<div layout:fragment="content">
+		<section class="my-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+					
+						
+						<h3  th:text="'La reservation de M. ' + ${client.prenom} + ' ' + ${client.nom}" > </h3>
+						<h3  th:each="confirm : ${confirmation}" th:text="${confirm}" > </h3>
+						
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
 
-	<a href="/offres"> cliquer ici pour reserver une autre chambre </a>
 </body>
 </html>
+
 
 

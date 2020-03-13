@@ -1,12 +1,21 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head> 
-    <title>Getting Started: Serving Web Content</title> 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Offres d'hotel</title>
 </head>
 <body>
-      
-    	<h1>Version distrbuée webservice1 : Chercher les offres d'hotel </h1>
+
+<div layout:fragment="content">
+    <section class="my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                   
+                   
+                   
+                   <h1>Version distrbuée webservice1 : Chercher les offres d'hotel </h1>
 	    <form action="#" th:action="@{/offres}" th:object="${RequestOffres}" method="post">
 	    	<p>Login: <input type="text" th:field="*{login}" /></p>
 	        <p>Password: <input type="text" th:field="*{password}" /></p>
@@ -16,5 +25,13 @@
 	        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 	    </form>
     
+    
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
 </body>
 </html>
