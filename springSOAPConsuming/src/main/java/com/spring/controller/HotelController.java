@@ -67,12 +67,11 @@ public class HotelController {
 		  
 		  GetHotelResponse response = hotelClient.getOffresHotel(login, password, dateDebut, dateFin, nombrePersonnesHeberges);
 		  offres = response.getOffres();
-		  for(Offre off: offres) {
-				System.err.println("############"+ off.getDateDisponibilite());
-				System.err.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-			}
 		  
-		  model.addAttribute("listOffre", offres);
+		  if(offres != null)
+			  model.addAttribute("listOffre", offres);
+		  else
+			  model.addAttribute("listOffre", "notfound");
 			
 	    return "offres-result";
 	  }

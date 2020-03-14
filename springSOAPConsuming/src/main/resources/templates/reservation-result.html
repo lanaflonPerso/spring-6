@@ -12,11 +12,21 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-					
-						
-						<h3  th:text="'La reservation de M. ' + ${client.prenom} + ' ' + ${client.nom}" > </h3>
-						<h3  th:each="confirm : ${confirmation}" th:text="${confirm}" > </h3>
-						
+
+
+						<div class="card">
+							<div class="card-header">Confirmation de reservation</div>
+							<div class="card-body">
+							
+								<div th:unless="${confirmation == null}" class="alert alert-success" role="alert">
+									<h4	th:text="'La reservation de M. ' + ${client.prenom} + ' ' + ${client.nom}"></h4>
+									<h4 th:each="confirm : ${confirmation}" th:text="${confirm}"></h4>
+								</div>
+							</div>
+						</div>
+
+
+
 					</div>
 				</div>
 			</div>

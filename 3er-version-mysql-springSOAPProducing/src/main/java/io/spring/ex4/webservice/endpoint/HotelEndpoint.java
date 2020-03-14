@@ -78,8 +78,11 @@ public class HotelEndpoint {
 					offres.add(offr);				}
 			}
 		} 
-		
-		response.getOffres().addAll(offres);
+		if(offres != null) {
+			response.getOffres().addAll(offres);
+		} else {
+			response.getOffres().addAll(offres);
+		}
 		System.out.println("Agence login: "+ request.getLogin());
 		System.out.println(" Agence voyage password:  "+ request.getPassword());
 		System.out.println(" Nombre de personnes: "+ request.getNombrePersonnesHeberges());
@@ -93,9 +96,7 @@ public class HotelEndpoint {
 		ReservationResponse response = new ReservationResponse();
 		
 		//confirmation = reservationRepository.confirmerReservation(request.getLogin(), request.getPassword(), request.getIdOffre(), request.getClient());
-		
-		System.out.println("######################################################");
-		
+				
 		Reservation res = new Reservation();
 		Client client = clientRepository.searchClient(request.getClient().getNom(), request.getClient().getPrenom(), request.getClient().getCarteCredit());
 		if(client == null) {

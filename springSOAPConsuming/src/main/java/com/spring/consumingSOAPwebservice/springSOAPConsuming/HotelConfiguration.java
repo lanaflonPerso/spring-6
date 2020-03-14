@@ -21,7 +21,7 @@ public class HotelConfiguration {
   @Primary
   public HotelClient countryClient(Jaxb2Marshaller marshaller) {
     HotelClient client = new HotelClient();
-    client.setDefaultUri("http://localhost:8080/ws");
+    client.setDefaultUri("https://springsoapproducing.cfapps.io/ws");
     client.setMarshaller(marshaller);
     client.setUnmarshaller(marshaller);
     return client;

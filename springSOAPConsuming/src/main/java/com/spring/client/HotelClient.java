@@ -35,8 +35,7 @@ public class HotelClient extends WebServiceGatewaySupport {
 	 
 	    GetHotelResponse response = (GetHotelResponse) getWebServiceTemplate().marshalSendAndReceive("http://localhost:8080/ws/hotel", request,
 	            new SoapActionCallback("http://spring.io/ex4/webservice/GetHotelRequest"));
-
-	    log.info("€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€e");
+	    
 	    return response;
 	  }
 
@@ -51,10 +50,9 @@ public class HotelClient extends WebServiceGatewaySupport {
 	 
 	    log.info("Reservation de client : " + client.getNom());
 
-	    ReservationResponse response = (ReservationResponse) getWebServiceTemplate().marshalSendAndReceive("http://localhost:8080/ws/reservation", request,
+	    ReservationResponse response = (ReservationResponse) getWebServiceTemplate().marshalSendAndReceive("http://localhost:8080/ws/hotel", request,
 	            new SoapActionCallback("http://spring.io/ex4/webservice/ReservationRequest"));
 
-	    log.info("€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€€e");
 	    return response;
 	  }
   

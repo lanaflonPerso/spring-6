@@ -45,16 +45,6 @@ public class MainController {
 		model.addAttribute("hotels", hotelRepository.findHotel(1));
 		return "all";
 	}
-	/*
-	@GetMapping(path="/find/{name}/{email}")
-	public String getFInUser(@PathVariable String name, 
-			@PathVariable String email, Model model) {
-		model.addAttribute("users", userRepository.findByNameAndEmail(name, email));
-		System.out.print("########################################################################################## "+name);
-		System.out.print("########################################################################################## "+email);
-		return "all";
-	}
-	*/
 
 	@PostMapping(path="/add") // Map ONLY POST Requests
 	public @ResponseBody String addNewUser (@RequestParam String nom, @RequestParam int nombreEtoile) {
