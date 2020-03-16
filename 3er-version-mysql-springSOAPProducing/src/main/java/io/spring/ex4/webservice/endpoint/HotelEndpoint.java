@@ -60,29 +60,35 @@ public class HotelEndpoint {
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getHotelRequest")
 	@ResponsePayload
 	public GetHotelResponse getOffres(@RequestPayload GetHotelRequest request) {
+		offres.clear();
+		System.out.println("#############################################pppppppppppppppppppppppppppppppppppppppppppppppppppppppp#################################################################");
 		GetHotelResponse response = new GetHotelResponse();
 		hotel = hotelRepository.findHotel(1);	
 		agencesVoyages = agenceVoyageRepository.findAgenceVoyage(request.getLogin(), request.getPassword());
-										
-		if (hotel.getChambre().size() >= request.getNombrePersonnesHeberges()) {
-			for (Chambre ch : hotel.getChambre()) {
-				// tester la disponibilité, et l'intervalle de prix demandé par le client.
-				if (ch.getDisponible().equals("yes")) {
-					Offre offr = new Offre();
-					// identifiant de l'offre est le numéro de chambre concaténer avec la date d'oujourd'hui
-					offr.setId(ch.getNumero() + "_" + new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
-					offr.setDateDisponibilite("05-03-2020");
-					offr.setTypeChambre(ch.getTypeLit());
-					offr.setPrix((agencesVoyages.getTarif() * ch.getPrix()) / 100);
-					// ajouter la chambre à la liste des offres disponibles
-					offres.add(offr);				}
+		if (agencesVoyages != null) {
+			System.out.println("##########################################################################uuuuuuuuuuuuuuuuuuuuuu#####################################################################");
+			if (hotel.getChambre().size() >= request.getNombrePersonnesHeberges()) {
+				for (Chambre ch : hotel.getChambre()) {
+					// tester la disponibilité, et l'intervalle de prix demandé par le client.
+					if (ch.getDisponible().equals("yes")) {
+						Offre offr = new Offre();
+						// identifiant de l'offre est le numéro de chambre concaténer avec la date
+						// d'oujourd'hui
+						offr.setId(ch.getNumero() + "_" + new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
+						offr.setDateDisponibilite("05-03-2020");
+						offr.setTypeChambre(ch.getTypeLit());
+						offr.setPrix((agencesVoyages.getTarif() * ch.getPrix()) / 100);
+						// ajouter la chambre à la liste des offres disponibles
+						offres.add(offr);
+					}
+				}
 			}
 		} 
-		if(offres != null) {
+		
+		if(offres.size() != 0) {
+			System.out.println("found ##########################################################################uuuuuuuuuuuuuuuuuuuuuu#####################################################################");
 			response.getOffres().addAll(offres);
-		} else {
-			response.getOffres().addAll(offres);
-		}
+		} 
 		System.out.println("Agence login: "+ request.getLogin());
 		System.out.println(" Agence voyage password:  "+ request.getPassword());
 		System.out.println(" Nombre de personnes: "+ request.getNombrePersonnesHeberges());

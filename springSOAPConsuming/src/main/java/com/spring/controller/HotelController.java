@@ -64,14 +64,14 @@ public class HotelController {
 		  String dateDebut = RequestOffres.getDateDebut();
 		  String dateFin = RequestOffres.getDateFin();
 		  int nombrePersonnesHeberges = RequestOffres.getNombrePersonnesHeberges();
-		  
-		  GetHotelResponse response = hotelClient.getOffresHotel(login, password, dateDebut, dateFin, nombrePersonnesHeberges);
+		  GetHotelResponse response = new GetHotelResponse();
+		  response = hotelClient.getOffresHotel(login, password, dateDebut, dateFin, nombrePersonnesHeberges);
 		  offres = response.getOffres();
 		  
 		  if(offres != null)
 			  model.addAttribute("listOffre", offres);
 		  else
-			  model.addAttribute("listOffre", "notfound");
+			  model.addAttribute("listOffre", null);
 			
 	    return "offres-result";
 	  }

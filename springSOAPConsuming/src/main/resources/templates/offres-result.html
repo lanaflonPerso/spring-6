@@ -46,17 +46,16 @@
 									</thead>
 									<tbody>
 										<tr th:each="offre : ${listOffre}">
-											<th th:text="${offre.id}" scope="row"></th>
-											<th th:text="${offre.typeChambre}"></th>
+											<td th:text="${offre.id}" scope="row"></td>
+											<td th:text="${offre.typeChambre}"></td>
 											<td th:text="${offre.dateDisponibilite}" ></td>
 											<td th:text="${offre.prix}" ></td>
 										</tr>
 									</tbody>
 								</table>
-
-								<div th:unless="${listOffre == null}"
-									class="alert alert-warning" role="alert">Oops! Désolé, il
-									n'y a pas d'offres pour les dates selectionnées.</div>
+					
+								<div th:if="${#lists.isEmpty(listOffre)}"
+									class="alert alert-warning" role="alert">Oops! Désolé, il n'y a pas d'offres pour les dates selectionnées.</div>
 
 
 								<a href="/offres" class="btn btn-primary">Submit Chercher d'autres offres d'hébergement</a>
