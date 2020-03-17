@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Accueil </title>
+</head>
+<body>
+
+<!-- <div layout:fragment="content"> -->
+<!--     <section class="my-5"> -->
+<!--         <div class="container"> -->
+<!--             <div class="row"> -->
+<!--                 <div class="col-md-12"> -->
+<!--                     <h1>Welcome to Our Site</h1> -->
+<!--                     <p>Lorem ipsum dolor sit amet, consectetur [....]</p> -->
+<!--                 </div> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </section> -->
+<!-- </div> -->
+
+
+
+<div layout:fragment="content" class="container">
+		<div class="card-deck mb-3 text-center">
+			<div class="card mb-4 shadow-sm">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">WSDL</h4>
+				</div>
+				<div class="card-body">
+					<!--         <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1> -->
+					<ul class="list-unstyled mt-3 mb-4">
+						<li>Version distribuée</li>
+						<li>Agence de voyage et hôtels</li>
+						<li>WS1: Consulter les disponibilités</li>
+						<li>WS2: Effectuer une réservation</li>
+					</ul>
+					<button type="button"
+						class="btn btn-lg btn-block btn-outline-primary">
+						<a class="p-2 text-dark" target="_blank" href="https://springsoapproducing.cfapps.io/ws/hotel.wsdl"> Consulter </a>
+					</button>
+				</div>
+			</div>
+			<div class="card mb-4 shadow-sm">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">WS1: Offres diponibles</h4>
+				</div>
+				<div class="card-body">
+					<h1 class="card-title pricing-card-title">
+						<small>Agences de voyage</small>
+					</h1>
+					<ul class="list-unstyled mt-3 mb-4">
+						<li>Consulter les disponibilités des offres</li>
+						<li>getHotelRequest</li>
+						<li>getHotelResponse</li>
+					</ul>
+					<button type="button" class="btn btn-lg btn-block btn-primary">
+						<a class="p-2 text-dark" href="/offres"> Offres Hotel </a>
+					</button>
+				</div>
+			</div>
+			<div class="card mb-4 shadow-sm">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">WS2: Réservation</h4>
+				</div>
+				<div class="card-body">
+					<h1 class="card-title pricing-card-title">
+						<small class="text-muted"> Effectuer une réservation </small>
+					</h1>
+					<ul class="list-unstyled mt-3 mb-4">
+						<li>ReservationRequest</li>
+						<li>ReservationResponse</li>
+					</ul>
+					<button type="button" class="btn btn-lg btn-block btn-primary">
+						<a class="p-2 text-dark" href="/reservation"> Reserver </a>
+					</button>
+
+				</div>
+			</div>
+		</div>
+</div>
+
+</body>
+</html>

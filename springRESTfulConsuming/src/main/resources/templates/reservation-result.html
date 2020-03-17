@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<title>Offres d'hotel</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<section class="my-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+
+
+						<div class="card">
+							<div class="card-header">Confirmation de reservation</div>
+							<div class="card-body">
+							
+								<div th:unless="${confirmation == null}" class="alert alert-success" role="alert">
+									<h4	th:text="'La reservation de M. ' + ${client.prenom} + ' ' + ${client.nom}"></h4>
+									<h4 th:each="confirm : ${confirmation}" th:text="${confirm}"></h4>
+								</div>
+							</div>
+						</div>
+
+
+
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+</body>
+</html>
+
+
+

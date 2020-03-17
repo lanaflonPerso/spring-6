@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<title>Offres d'hotel</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<section class="my-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">						
+						<div class="card">
+							<div class="card-header">WS2: Reserver une chambre d'hotel</div>
+							<div class="card-body">
+
+								<form action="#" th:action="@{/reservation}" th:object="${reservationRequest}" method="post">
+									<div class="form-group">
+										<label for="exampleInputEmail1"> Login </label> <input
+											type="text" th:field="*{login}" class="form-control"
+											aria-describedby="emailHelp" placeholder="Enter login">
+										<small id="emailHelp" class="form-text text-muted">entrer le login de l'agence.</small>
+									</div>
+									<div class="form-group">
+										<label>Password</label> <input
+											type="password" th:field="*{password}" class="form-control" placeholder="Entrer le password">
+									</div>
+
+									<div class="form-group">
+										<label> Identifiant de l'offre </label> <input
+											type="text" th:field="*{idOffre}" class="form-control"
+											aria-describedby="identifier de l'offre"
+											placeholder="Enter date de début"> <small id="emailHelp"
+											class="form-text text-muted">isaisir l'identifiant de l'offre</small>
+									</div>
+
+									<div class="form-group">
+										<label> Prenom du client </label> <input
+											type="text" th:field="*{client.prenom}" class="form-control"
+											aria-describedby="saisir le prénom du client" placeholder="Prénom du client">
+										<small id="emailHelp" class="form-text text-muted">saisir le prénom du client.</small>
+									</div>
+
+									<div class="form-group">
+										<label> Nom du client </label> <input type="text"
+											th:field="*{client.nom}" class="form-control"
+											aria-describedby="emailHelp" placeholder="Nom du client">
+										<small id="emailHelp" class="form-text text-muted">entrer le nom du client.</small>
+									</div>
+									
+									<div class="form-group">
+										<label> Numéro de la carte bancaire </label> <input type="text"
+											th:field="*{client.carteCredit}" class="form-control"
+											aria-describedby="emailHelp" placeholder="numéro de la carte bancaire">
+										<small id="emailHelp" class="form-text text-muted">entrer le numéro de la carte bancaire.</small>
+									</div>
+
+									<button type="submit" class="btn btn-primary">Reserver</button>
+								</form>
+
+							</div>
+						</div>
+						
+						
+						
+						
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+</body>
+</html>

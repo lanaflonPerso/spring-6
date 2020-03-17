@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<title>Offres d'hotel</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<section class="my-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+
+						<div class="card">
+							<div class="card-header">WS1: Chercher les offres d'hotel</div>
+							<div class="card-body">
+
+
+								<form action="#" th:action="@{/offres}"
+									th:object="${RequestOffres}" method="post">
+									<div class="form-group">
+										<label for="exampleInputEmail1"> Login </label> <input
+											type="text" th:field="*{login}" class="form-control"
+											aria-describedby="emailHelp" placeholder="Enter email">
+										<small id="emailHelp" class="form-text text-muted">entrer
+											le login de l'agence.</small>
+									</div>
+									<div class="form-group">
+										<label>Password</label> <input
+											type="password" th:field="*{password}" class="form-control"
+											placeholder="Password">
+									</div>
+
+									<div class="form-group">
+										<label> Date de début </label> <input
+											type="text" th:field="*{dateDebut}" class="form-control"
+											aria-describedby="emailHedate de début"
+											placeholder="Enter date de début"> <small id="emailHelp"
+											class="form-text text-muted">entrer le login de
+											l'agence.</small>
+									</div>
+
+									<div class="form-group">
+										<label> Date de fin </label> <input
+											type="text" th:field="*{dateFin}" class="form-control"
+											aria-describedby="saisir date de fin" placeholder="Enter date de fin">
+										<small id="emailHelp" class="form-text text-muted">entrer
+											le login de l'agence.</small>
+									</div>
+
+									<div class="form-group">
+										<label> Nombre de personnes à
+											hébergées </label> <input type="text"
+											th:field="*{nombrePersonnesHeberges}" class="form-control"
+											aria-describedby="emailHelp" placeholder="Enter nombre de personnes à hébergées">
+										<small id="emailHelp" class="form-text text-muted">entrer
+											le login de l'agence.</small>
+									</div>
+
+									<button type="submit" class="btn btn-primary">Chercher</button>
+								</form>
+
+							</div>
+						</div>
+
+
+
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+</body>
+</html>

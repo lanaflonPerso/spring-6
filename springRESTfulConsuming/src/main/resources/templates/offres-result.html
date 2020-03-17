@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<title>Offres d'hotel</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<section class="my-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+
+						<div class="card">
+							<div class="card-header">Offres d'hotel</div>
+							<div class="card-body">
+								<h5 class="card-title">Critères de recherche des offres
+									d'hotel</h5>
+<!-- 								<p th:text="'login: ' + ${RequestOffres.login}" -->
+<!-- 									class="card-text" /> -->
+<!-- 								<p th:text="'password: ' + ${RequestOffres.password}" -->
+<!-- 									class="card-text" /> -->
+								<div class="alert alert-primary" role="alert">
+									<p th:text="'Date de début: ' + ${RequestOffres.dateDebut}"
+										class="card-text" />
+									<p th:text="'Date de fin: ' + ${RequestOffres.dateFin}"
+										class="card-text" />
+									<p
+										th:text="'Nombre de personne: ' + ${RequestOffres.nombrePersonnesHeberges}"
+										class="card-text" />
+								</div>
+
+								<h5 class="card-title">Result: Offres disponible</h5>
+
+
+								<table th:if="${listOffre != null}" class="table table-bordered">
+									<thead>
+										<tr>
+											<th scope="col">Id Offre</th>
+											<th scope="col">Type de chambre</th>
+											<th scope="col">Date de disponibilité</th>
+											<th scope="col">Prix</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="offre : ${listOffre}">
+											<td th:text="${offre.id}" scope="row"></td>
+											<td th:text="${offre.typeChambre}"></td>
+											<td th:text="${offre.dateDisponibilite}" ></td>
+											<td th:text="${offre.prix}" ></td>
+										</tr>
+									</tbody>
+								</table>
+					
+								<div th:if="${#lists.isEmpty(listOffre)}"
+									class="alert alert-warning" role="alert">Oops! Désolé, il n'y a pas d'offres pour les dates selectionnées.</div>
+
+
+								<a href="/offres" class="btn btn-primary">Submit Chercher d'autres offres d'hébergement</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+</body>
+</html>
