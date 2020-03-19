@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import io.spring.ex4.webservice.Hotel;
-import io.spring.ex4.webservice.Offre;
+
 
 @Repository
 public interface HotelRepository extends CrudRepository<Hotel, Integer>, JpaRepository<Hotel, Integer>{

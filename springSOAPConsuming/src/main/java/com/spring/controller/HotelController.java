@@ -45,11 +45,6 @@ public class HotelController {
 //        return "index";
 //      }
 
-	   @GetMapping("/contact")
-	    public String contactPage() {
-	        return "contact";
-	    }
-	  
 	  
 	  @GetMapping("/offres")
 	  public String OffreForm(Model model) {

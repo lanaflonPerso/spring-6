@@ -23,18 +23,15 @@
 <!-- 								<p th:text="'password: ' + ${RequestOffres.password}" -->
 <!-- 									class="card-text" /> -->
 								<div class="alert alert-primary" role="alert">
-									<p th:text="'Date de début: ' + ${RequestOffres.dateDebut}"
-										class="card-text" />
-									<p th:text="'Date de fin: ' + ${RequestOffres.dateFin}"
+									<p th:text="'Date de début: ' + ${RequestOffres.dateDebut} + ', Date de fin: ' + ${RequestOffres.dateFin}"
 										class="card-text" />
 									<p
 										th:text="'Nombre de personne: ' + ${RequestOffres.nombrePersonnesHeberges}"
 										class="card-text" />
 								</div>
-
-								<h5 class="card-title">Result: Offres disponible</h5>
-
-
+								<br/>
+								<h2 class="card-title">Result: Offres disponible</h2>
+								
 								<table th:if="${listOffre != null}" class="table table-bordered">
 									<thead>
 										<tr>
@@ -42,6 +39,8 @@
 											<th scope="col">Type de chambre</th>
 											<th scope="col">Date de disponibilité</th>
 											<th scope="col">Prix</th>
+											<th scope="col">Chambre image</th>
+											<th scope="col">Reserver</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -50,6 +49,9 @@
 											<td th:text="${offre.typeChambre}"></td>
 											<td th:text="${offre.dateDisponibilite}" ></td>
 											<td th:text="${offre.prix}" ></td>
+											<td><img class="card-img-top" th:src="@{'http://localhost:8081/get-image-with-media-type/'+ 
+											${#strings.arraySplit(offre.id,'_')[0]}}" style="width:270px; hight:90px;"></td>
+											<th scope="col"><a class="btn btn-primary" th:href="@{/reservation}" role="button"> Reserver </a></th>
 										</tr>
 									</tbody>
 								</table>
