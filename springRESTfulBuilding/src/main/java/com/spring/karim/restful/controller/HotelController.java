@@ -72,7 +72,9 @@ public class HotelController {
 						offr.setId(ch.getNumero() + "_" + new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
 						offr.setDateDisponibilite("05-03-2020");
 						offr.setTypeChambre(ch.getTypeLit());
-						offr.setPrix((agencesVoyages.getTarif() * ch.getPrix()) / 100);
+						//offr.setPrix((agencesVoyages.getTarif() * ch.getPrix()) / 100);
+						offr.setPrix(ch.getPrix());
+						offr.setNomHotel(ch.getHotel().getNom());
 						offres.add(offr);
 					}
 				}

@@ -23,44 +23,34 @@
 <!-- 								<p th:text="'password: ' + ${RequestOffres.password}" -->
 <!-- 									class="card-text" /> -->
 								<div class="alert alert-primary" role="alert">
-									<p th:text="'Date de début: ' + ${RequestOffres.dateDebut} + ', Date de fin: ' + ${RequestOffres.dateFin}"
-										class="card-text" />
+									<p th:text="'Date de début: ' + ${RequestOffres.dateDebut} + ', Date de fin: ' + ${RequestOffres.dateFin}"/>
 									<p
-										th:text="'Nombre de personne: ' + ${RequestOffres.nombrePersonnesHeberges}"
-										class="card-text" />
+										th:text="'Nombre de personne: ' + ${RequestOffres.nombrePersonnesHeberges}" />
 								</div>
 								<br/>
-								<h2 class="card-title">Result: Offres disponible</h2>
-								
-								<table th:if="${listOffre != null}" class="table table-bordered">
-									<thead>
-										<tr>
-											<th scope="col">Id Offre</th>
-											<th scope="col">Type de chambre</th>
-											<th scope="col">Date de disponibilité</th>
-											<th scope="col">Prix</th>
-											<th scope="col">Chambre image</th>
-											<th scope="col">Reserver</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr th:each="offre : ${listOffre}">
-											<td th:text="${offre.id}" scope="row"></td>
-											<td th:text="${offre.typeChambre}"></td>
-											<td th:text="${offre.dateDisponibilite}" ></td>
-											<td th:text="${offre.prix}" ></td>
-											<td><img class="card-img-top" th:src="@{'http://localhost:8081/get-image-with-media-type/'+ 
-											${#strings.arraySplit(offre.id,'_')[0]}}" style="width:270px; hight:90px;"></td>
-											<th scope="col"><a class="btn btn-primary" th:href="@{/reservation}" role="button"> Reserver </a></th>
-										</tr>
-									</tbody>
-								</table>
+								<h2 class="card-title">Resultat de recherche: Offres disponible</h2>
+
+								<div class="media border" style="margin-bottom:12px; padding: 10px" th:if="${listOffre != null}" th:each="offre : ${listOffre}">
+									<img class="align-self-center mr-3"
+										th:src="@{'http://localhost:8081/get-image-with-media-type/'+ ${#strings.arraySplit(offre.id,'_')[0]}}"
+										style="width: 270px; hight: 90px;">
+									<div class="media-body">
+										<h4 th:text="${offre.nomHotel}" class="h3" style="font-weight: bold"></h4>
+										<h5 th:text="' Offre numéro : '+${offre.id}" class="h3"></h5>
+										<p th:text="'Type de chambre: '+${offre.typeChambre}" class="h5"></p>
+										<p th:text="'Date de diponibilité: '+${offre.dateDisponibilite}" class="h5"></p>
+										<p class="h4">
+											<span th:text="'Prix: '+ ${offre.prix}" class="badge badge-pill badge-success"></span>
+										</p>
+									</div>
+									<a   class="align-self-center mr-3 btn badge badge-pill badge-warning" th:href="@{'/reservation/'+${offre.id}}" role="button"> Reserver </a>
+								</div>
 					
 								<div th:if="${#lists.isEmpty(listOffre)}"
 									class="alert alert-warning" role="alert">Oops! Désolé, il n'y a pas d'offres pour les dates selectionnées.</div>
 
 
-								<a href="/offres" class="btn btn-primary">Submit Chercher d'autres offres d'hébergement</a>
+								<a href="/offres" class="btn btn-primary"> Chercher d'autres offres d'hébergement</a>
 							</div>
 						</div>
 					</div>

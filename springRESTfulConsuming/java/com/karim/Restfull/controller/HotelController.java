@@ -81,28 +81,30 @@ public class HotelController {
 	    return "offres-result";
 	  }
 	  
-	@GetMapping("/product/image/{id}")
-	  public void showChambreImage(@PathVariable String id, HttpServletResponse response) throws IOException {
-	  response.setContentType("image/jpeg"); // Or whatever format you wanna use
-
-	  //Product product = productRepository.findById(id);
-	  
-	  String uri_image = "http://localhost:8081/get-image-with-media-type/"+id;
-	  byte[] image = restTemplate.getForObject(uri_image, byte[].class);
-
-	  InputStream is = new ByteArrayInputStream(image);
-	  //IOUtils(is, response.getOutputStream());
-	  IOUtils.toByteArray(is);
-	  //IOUtils(is, response.getOutputStream());
-	  }
+//	@GetMapping("/chambre/image/{id}")
+//	  public void showChambreImage(@PathVariable String id, HttpServletResponse response) throws IOException {
+//	  response.setContentType("image/jpeg"); // Or whatever format you wanna use
+//
+//	  //Product product = productRepository.findById(id);
+//	  
+//	  String uri_image = "http://localhost:8081/get-image-with-media-type/"+id;
+//	  byte[] image = restTemplate.getForObject(uri_image, byte[].class);
+//
+//	  InputStream is = new ByteArrayInputStream(image);
+//	  //IOUtils(is, response.getOutputStream());
+//	  IOUtils.toByteArray(is);
+//	  //IOUtils(is, response.getOutputStream());
+//	  }
 	  
 	  /*****************************************************************************/
 	  /********************************  Reservation *******************************/
 	  /*****************************************************************************/
 	  
-	  @GetMapping("/reservation")
-	  public String reservationForm(Model model) {
-	    model.addAttribute("reservationRequest", new ReservationRequest());
+	  @GetMapping("/reservation/{idOffre}")
+	  public String reservationForm(@PathVariable String idOffre, Model model) {
+		ReservationRequest rq = new ReservationRequest();
+		rq.setIdOffre(idOffre);
+		model.addAttribute("reservationRequest", rq);
 	    return "reservation-form";
 	  }
 
@@ -116,9 +118,7 @@ public class HotelController {
 		  String uri = "http://localhost:8081/reservation/"+login+"/"+password+"/"+idOffre+"/"+client.getNom()+"/"+client.getPrenom()+"/"+client.getCarteCredit();
 		  String[] conf = restTemplate.getForObject(uri, String[].class);
 		  confirmation = Arrays.asList(conf);
-		  for(String co : conf)
-			  System.out.println("########################### gggggggggggggggggg "+ co);
-		  
+
 		  model.addAttribute("confirmation", confirmation);
 		  model.addAttribute("client", client);
 			

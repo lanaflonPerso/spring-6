@@ -12,13 +12,29 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">						
-						<div class="card">
+						<div class="card content-center">
 							<div class="card-header">WS2: Reserver une chambre d'hotel</div>
 							<div class="card-body">
 
+								<div class="card" style="width: 18rem;">
+									<img class="card-img-top"
+									th:src="@{'http://localhost:8081/get-image-with-media-type/'+ 
+								    ${#strings.arraySplit(idOffre,'_')[0]}}" style="width: 270px; hight: 90px;">
+									<div class="card-body">
+										<p class="card-text"> Photo de la chambre d'hotel.</p>
+									</div>
+								</div>
+
 								<form action="#" th:action="@{/reservation}" th:object="${reservationRequest}" method="post">
 									<div class="form-group">
-										<label for="exampleInputEmail1"> Login </label> <input
+										<label> Identifiant de l'offre </label> <input
+											type="text" th:field="*{idOffre}" th:disabled="true" class="form-control"
+											aria-describedby="identifier de l'offre"
+											placeholder="Enter date de début">
+									</div>
+									
+									<div class="form-group">
+										<label for="exampleInputEmail1"> Login de l'agence</label> <input
 											type="text" th:field="*{login}" class="form-control"
 											aria-describedby="emailHelp" placeholder="Enter login">
 										<small id="emailHelp" class="form-text text-muted">entrer le login de l'agence.</small>
@@ -26,14 +42,6 @@
 									<div class="form-group">
 										<label>Password</label> <input
 											type="password" th:field="*{password}" class="form-control" placeholder="Entrer le password">
-									</div>
-
-									<div class="form-group">
-										<label> Identifiant de l'offre </label> <input
-											type="text" th:field="*{idOffre}" class="form-control"
-											aria-describedby="identifier de l'offre"
-											placeholder="Enter date de début"> <small id="emailHelp"
-											class="form-text text-muted">isaisir l'identifiant de l'offre</small>
 									</div>
 
 									<div class="form-group">
