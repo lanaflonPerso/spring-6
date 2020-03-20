@@ -65,13 +65,9 @@ public class HotelController {
 		  String dateFin = RequestOffres.getDateFin();
 		  int nombrePersonnesHeberges = RequestOffres.getNombrePersonnesHeberges();		
 		  
-		  String uri = "http://localhost:8081/offres/"+login+"/"+password+"/"+dateFin+"/"+dateFin+"/"+nombrePersonnesHeberges;
+		  String uri = "https://hotel-webservice-restful.cfapps.io/offres/"+login+"/"+password+"/"+dateFin+"/"+dateFin+"/"+nombrePersonnesHeberges;
 		  Offre[] offs = restTemplate.getForObject(uri, Offre[].class);
 		  offres = Arrays.asList(offs);
-		  
-		  
-		  //model.addAttribute("image", image);
-		  
 		   
 		  if(offres != null)
 			  model.addAttribute("listOffre", offres);
@@ -80,22 +76,7 @@ public class HotelController {
 			
 	    return "offres-result";
 	  }
-	  
-//	@GetMapping("/chambre/image/{id}")
-//	  public void showChambreImage(@PathVariable String id, HttpServletResponse response) throws IOException {
-//	  response.setContentType("image/jpeg"); // Or whatever format you wanna use
-//
-//	  //Product product = productRepository.findById(id);
-//	  
-//	  String uri_image = "http://localhost:8081/get-image-with-media-type/"+id;
-//	  byte[] image = restTemplate.getForObject(uri_image, byte[].class);
-//
-//	  InputStream is = new ByteArrayInputStream(image);
-//	  //IOUtils(is, response.getOutputStream());
-//	  IOUtils.toByteArray(is);
-//	  //IOUtils(is, response.getOutputStream());
-//	  }
-	  
+	
 	  /*****************************************************************************/
 	  /********************************  Reservation *******************************/
 	  /*****************************************************************************/
@@ -115,7 +96,7 @@ public class HotelController {
 		  String idOffre = reservationRequest.getIdOffre();
 		  Client client = reservationRequest.getClient();
 		  
-		  String uri = "http://localhost:8081/reservation/"+login+"/"+password+"/"+idOffre+"/"+client.getNom()+"/"+client.getPrenom()+"/"+client.getCarteCredit();
+		  String uri = "https://hotel-webservice-restful.cfapps.io/reservation/"+login+"/"+password+"/"+idOffre+"/"+client.getNom()+"/"+client.getPrenom()+"/"+client.getCarteCredit();
 		  String[] conf = restTemplate.getForObject(uri, String[].class);
 		  confirmation = Arrays.asList(conf);
 

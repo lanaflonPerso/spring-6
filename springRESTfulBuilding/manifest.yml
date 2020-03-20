@@ -1,0 +1,10 @@
+applications:
+- name: hotel-webservice-restful
+  memory: 1024M
+  buildpack: java_buildpack
+  routes:
+  - route: hotel-webservice-restful.cfapps.io
+services:
+- spring_soap
+
+    

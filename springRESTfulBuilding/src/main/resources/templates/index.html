@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Accueil </title>
+</head>
+<body>
+
+<div layout:fragment="content" class="container">
+		<div class="card-deck mb-3 text-center">
+			 
+			<div class="card mb-4 shadow-sm">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">Backend : webservice RESTful</h4>
+				</div>
+				<div class="card-body">
+					<h1 class="card-title pricing-card-title">
+						<small>Vous pouvez consulter le web service de l'hotel directement (format json) <br/>
+						ou visiter l'application de test (client)
+						 </small>
+					</h1>
+					
+					<button type="button" class="btn btn-warning btn-lg">
+						<a class="p-2 text-dark" target="_blank" href="https://hotel-webservice-restful.cfapps.io/offres/karim/dahdouh/2020-03-05/2020-03.09/1"> Example de Test </a>
+					</button>
+					<button type="button" class="btn btn-success btn-lg">
+						<a class="p-2 text-dark" target="_blank" href="https://hotel-client.cfapps.io/offres">Application d'hotel (consommer webservice)</a>
+					</button>
+										
+				</div>
+			</div>
+			
+		</div>
+</div>
+
+</body>
+</html>

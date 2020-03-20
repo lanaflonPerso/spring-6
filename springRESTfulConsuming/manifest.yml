@@ -1,0 +1,10 @@
+applications:
+- name: hotel-client
+  memory: 1024M
+  buildpack: java_buildpack
+  routes:
+  - route: hotel-client.cfapps.io
+services:
+- spring_soap
+
+    

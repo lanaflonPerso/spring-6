@@ -11,6 +11,7 @@ import java.util.List;
 import org.apache.commons.io.IOUtils;
 
 import org.springframework.http.MediaType;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,7 +26,6 @@ import com.spring.karim.restful.model.Offre;
 import com.spring.karim.restful.repository.AgenceVoyageRepository;
 import com.spring.karim.restful.repository.ChambreRepository;
 import com.spring.karim.restful.repository.ClientRepository;
-import com.spring.karim.restful.repository.EmployeeRepository;
 import com.spring.karim.restful.repository.HotelRepository;
 import com.spring.karim.restful.repository.ReservationRepository;
 import com.spring.karim.restful.model.Reservation;
@@ -45,8 +45,7 @@ public class HotelController {
 	private Hotel hotel = new Hotel();
 	private List<Chambre> listChambres = new ArrayList<Chambre>();
 	private AgenceVoyage agencesVoyages = new AgenceVoyage();
-
-	
+		
 	public HotelController(HotelRepository hotelRepository, ReservationRepository reservationRepository, 
 			AgenceVoyageRepository agenceVoyageRepository, ChambreRepository chambreRepository, ClientRepository clientRepository) {
 		this.hotelRepository = hotelRepository;

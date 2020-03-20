@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE"> Hotel RESTful webservice</title>
+
+<!-- Bootstrap CSS -->
+<link href="./css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+</head>
+<body>
+	<div
+		class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+		<h5 class="my-0 mr-md-auto font-weight-normal"> Webservice RESTful basé sur Spring boot et MYSQL</h5>
+	</div>
+
+
+	<section layout:fragment="content"  style="font-size:1.5em">
+		<p>Default content.</p>
+	</section>
+
+	<!-- Footer -->
+	<footer class="container py-5"  style="font-size:1.5em">
+		<div class="row">
+			<div class="col-md-12">
+				<p th:text="'&copy;  '+ 2020 + ' Karim Dahdouh -Tous droits réservés' ">
+					</small>
+				</p>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- Optional Section -->
+	<th:block layout:fragment="optional" />
+
+</body>
+</html>
